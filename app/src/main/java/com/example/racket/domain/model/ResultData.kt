@@ -7,8 +7,6 @@ sealed class ResultData<out T> {
 
     data class Failure<out T>(val message: String) : ResultData<T>()
 
-    data class Loading<out T>(val value: T? = null) : ResultData<T>()
-
     data class Error(val throwable: Throwable) : ResultData<Nothing>()
 }
 
@@ -25,5 +23,4 @@ inline fun <T, O> ResultData<T>.map(block: (T) -> O): ResultData<O> =
         is ResultData.Success -> ResultData.Success(block(value))
         is ResultData.Failure -> ResultData.Failure(message)
         is ResultData.Error -> ResultData.Error(throwable)
-        is ResultData.Loading -> ResultData.Loading()
     }

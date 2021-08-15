@@ -2,7 +2,6 @@ package com.example.racket.data.dataSource.rocket
 
 import com.example.racket.data.mapper.execute
 import com.example.racket.data.mapper.mapToModel
-import com.example.racket.data.network.api.Dto
 import com.example.racket.data.network.api.RocketApi
 import com.example.racket.domain.model.Model
 import com.example.racket.domain.model.ResultData
@@ -12,9 +11,10 @@ class RocketRemoteDataSourceImp(private val rocketApi: RocketApi) : RocketRemote
 
     override suspend fun getData(): ResultData<List<Model.Rocket>> = execute {
         rocketApi.getRockets()
-    }.map { result ->
-        result.rockets.map { rocket: Dto.Rocket ->
+    }.map { rockets ->
+        rockets.map { rocket ->
             rocket.mapToModel()
         }
+
     }
 }

@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface RocketApi {
 
     @GET("rockets")
-    suspend fun getRockets():Response<Dto.result>
+    suspend fun getRockets():Response<List<Dto.Rocket>>
 }

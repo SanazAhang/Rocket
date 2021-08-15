@@ -9,16 +9,15 @@ sealed class Model {
         val active: Boolean,
         val stages: Int,
         val boosters: Int,
-        val costPerLaunch: Int,
         val successRatePct: Int,
         val firstFlight: String,
         val country: String,
         val company: String,
-        val flickrImages: List<String>,
         val description: String,
         val rocketId: String,
         val rocketName: String,
-        val rocketType: String
+        val rocketType: String,
+//        val flickrImages: List<String>
 //        val height: Height,
 //        val diameter: Diameter,
 //        val mass: Mass,

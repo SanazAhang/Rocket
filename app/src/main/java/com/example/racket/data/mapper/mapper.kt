@@ -22,14 +22,12 @@ fun Dto.Rocket.mapToModel() = Model.Rocket(
     active = active,
     boosters = boosters,
     company = company,
-    costPerLaunch = costPerLaunch,
     country = country,
     description = description,
     firstFlight = firstFlight,
-    flickrImages = flickrImages,
     rocketId = rocketId,
     rocketName = rocketName,
     rocketType = rocketType,
     stages = stages,
-    successRatePct = successRatePct
+    successRatePct = successRatePct,
 )

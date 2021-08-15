@@ -6,28 +6,15 @@ import com.squareup.moshi.JsonClass
 sealed class Dto {
 
     @JsonClass(generateAdapter = true)
-    data class result(
-        val rockets: List<Rocket>
-    ) : Dto()
-
-    @JsonClass(generateAdapter = true)
     data class Rocket(
         @Json(name = "id") val id: Int,
         @Json(name = "active") val active: Boolean,
         @Json(name = "stages") val stages: Int,
         @Json(name = "boosters") val boosters: Int,
-        @Json(name = "cost_per_launch") val costPerLaunch: Int,
         @Json(name = "success_rate_pct") val successRatePct: Int,
         @Json(name = "first_flight") val firstFlight: String,
         @Json(name = "country") val country: String,
         @Json(name = "company") val company: String,
-        @Json(name = "height") val height: Height,
-        @Json(name = "diameter") val diameter: Diameter,
-        @Json(name = "mass") val mass: Mass,
-        @Json(name = "first_stage") val firstStage: FirstStage,
-        @Json(name = "second_stage") val secondStage: SecondStage,
-        @Json(name = "engines") val engines: Engines,
-        @Json(name = "flickr_images") val flickrImages: List<String>,
         @Json(name = "description") val description: String,
         @Json(name = "rocket_id") val rocketId: String,
         @Json(name = "rocket_name") val rocketName: String,
@@ -36,8 +23,8 @@ sealed class Dto {
 
     @JsonClass(generateAdapter = true)
     data class Height(
-        @Json(name = "meters") val meters: Double,
-        @Json(name = "feet") val feet: Double
+        @Json(name = "meters") val meters: Float,
+        @Json(name = "feet") val feet: Float
     ) : Dto()
 
     @JsonClass(generateAdapter = true)

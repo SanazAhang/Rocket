@@ -4,8 +4,9 @@ import com.example.racket.domain.model.Model
 import com.example.racket.domain.model.ResultData
 import com.example.racket.domain.repository.rocket.RocketRepository
 import com.example.racket.domain.usecase.BaseUseCase
+import javax.inject.Inject
 
-class GetRocketUseCase(private val rocketRepository: RocketRepository):BaseUseCase<Unit,ResultData<List<Model.Rocket>>> {
+class GetRocketUseCase @Inject constructor(private val rocketRepository: RocketRepository):BaseUseCase<Unit,ResultData<List<Model.Rocket>>> {
 
     override suspend fun execute(input: Unit): ResultData<List<Model.Rocket>> {
        return rocketRepository.get()
