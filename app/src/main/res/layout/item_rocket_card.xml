@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="rocket"
+            type="com.example.racket.domain.model.Model.Rocket" />
+           </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rocket_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin8dp"
+        android:layout_marginEnd="@dimen/margin16dp"
+        android:background="@color/gray"
+        android:paddingTop="@dimen/margin8dp"
+        android:paddingBottom="@dimen/margin16dp"
+        >
+
+        <ImageView
+            android:id="@+id/image_view_rocket"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginStart="@dimen/margin16dp"
+            android:layout_marginEnd="@dimen/margin16dp"
+            app:loadImage="@{rocket.flickrImage}"
+            android:src="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+             />
+
+        <TextView
+            android:id="@+id/name_title"
+            style="@style/titleBold14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin8dp"
+            android:text="@string/name"
+            app:layout_constraintStart_toStartOf="@+id/image_view_rocket"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_rocket" />
+
+        <TextView
+            android:id="@+id/rate"
+            style="@style/titleBold14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/success_rate"
+            app:layout_constraintStart_toStartOf="@+id/image_view_rocket"
+            app:layout_constraintTop_toBottomOf="@+id/name_title" />
+
+        <TextView
+            android:id="@+id/description"
+            style="@style/titleBold14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin8dp"
+            android:text="@string/description"
+            app:layout_constraintStart_toStartOf="@+id/image_view_rocket"
+            app:layout_constraintTop_toBottomOf="@+id/rate" />
+
+        <TextView
+            android:id="@+id/text_view_rocket_title"
+            style="@style/titleItalic14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin8dp"
+            android:lines="1"
+            android:text="@{rocket.rocketName}"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_rocket"
+            app:layout_constraintStart_toEndOf="@+id/name_title"
+            app:layout_constraintTop_toTopOf="@+id/name_title"
+            tools:text="@string/name" />
+
+        <TextView
+            android:id="@+id/text_view_success_rate"
+            style="@style/titleItalic14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin8dp"
+            android:text="@{rocket.successRatePct}"
+            app:layout_constraintStart_toEndOf="@+id/rate"
+            app:layout_constraintTop_toTopOf="@+id/rate"
+            tools:text="@string/success_rate" />
+
+        <TextView
+            android:id="@+id/text_view_description"
+            style="@style/titleItalic14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin8dp"
+            android:lines="3"
+            android:text="@{rocket.description}"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_rocket"
+            app:layout_constraintStart_toEndOf="@+id/description"
+            app:layout_constraintTop_toTopOf="@+id/description"
+            tools:text="@string/description" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

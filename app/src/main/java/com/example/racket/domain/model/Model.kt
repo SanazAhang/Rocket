@@ -1,15 +1,17 @@
 package com.example.racket.domain.model
 
-import com.example.racket.data.network.api.Dto
-import com.squareup.moshi.Json
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 sealed class Model {
+
+    @Parcelize
     data class Rocket(
         val id: Int,
         val active: Boolean,
         val stages: Int,
         val boosters: Int,
-        val successRatePct: Int,
+        val successRatePct: String,
         val firstFlight: String,
         val country: String,
         val company: String,
@@ -17,12 +19,6 @@ sealed class Model {
         val rocketId: String,
         val rocketName: String,
         val rocketType: String,
-//        val flickrImages: List<String>
-//        val height: Height,
-//        val diameter: Diameter,
-//        val mass: Mass,
-//        val firstStage: FirstStage,
-//        val secondStage: SecondStage,
-//        val engines: Engines,
-    ) : Model()
+        val flickrImage: String
+    ) : Model(),Parcelable
 }

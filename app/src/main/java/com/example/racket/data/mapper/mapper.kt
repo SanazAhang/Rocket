@@ -29,5 +29,6 @@ fun Dto.Rocket.mapToModel() = Model.Rocket(
     rocketName = rocketName,
     rocketType = rocketType,
     stages = stages,
-    successRatePct = successRatePct,
+    successRatePct = successRatePct.toString(),
+    flickrImage = flickr_images[0]
 )

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/rocketsFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_rockets"
+        android:id="@+id/rocketsFragment"
+        android:name="com.example.racket.ui.rocketList.RocketsFragment"
+        android:label="RocketsFragment" >
+        <action
+            android:id="@+id/action_rocketsFragment_to_rocketDetailFragment"
+            app:destination="@id/rocketDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rocketDetailFragment"
+        android:name="com.example.racket.ui.rocketdetail.RocketDetailFragment"
+        android:label="fragment_rocket_detail"
+        tools:layout="@layout/fragment_rocket_detail" >
+
+        <argument
+            android:name="rocket"
+            app:argType="com.example.racket.domain.model.Model$Rocket" />
+    </fragment>
+</navigation>
