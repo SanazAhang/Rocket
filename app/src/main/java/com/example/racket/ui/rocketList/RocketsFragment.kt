@@ -21,8 +21,6 @@ class RocketsFragment : Fragment(), View.OnClickListener {
 
     private val viewModel: RocketViewModel by viewModels()
     private val rocketAdapter = RocketAdapter()
-    private lateinit var fromDateSetListener: DatePickerDialog.OnDateSetListener
-    private lateinit var toDateSetListener: DatePickerDialog.OnDateSetListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

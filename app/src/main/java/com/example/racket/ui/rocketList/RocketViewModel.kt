@@ -40,17 +40,17 @@ class RocketViewModel @Inject constructor(private val getRocketUseCase: GetRocke
             when (val result = getRocketUseCase.execute(Unit)) {
                 is ResultData.Success -> {
                     _rocket.value = ConsumableValue(result.value)
-                    _loading.value = ConsumableValue(true)
+                    _loading.value = ConsumableValue(false)
 
                 }
                 is ResultData.Failure -> {
                     _failure.value = ConsumableValue(result.message)
-                    _loading.value = ConsumableValue(true)
+                    _loading.value = ConsumableValue(false)
 
                 }
                 is ResultData.Error -> {
                     _error.value = ConsumableValue(result.throwable)
-                    _loading.value = ConsumableValue(true)
+                    _loading.value = ConsumableValue(false)
                 }
             }
         }
