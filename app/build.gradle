@@ -57,7 +57,9 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation "junit:junit:$junit"
-    androidTestImplementation "androidx.test.ext:junit:$ext_junit"
+    testImplementation "androidx.test.ext:junit:$ext_junit"
+    testImplementation "androidx.test.ext:junit-ktx:$ext_junit"
+
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
 
     //OKHttp
@@ -97,5 +99,7 @@ dependencies {
     testImplementation "com.google.truth:truth:1.1.3"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android_version"
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
-
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android_version"
 }
