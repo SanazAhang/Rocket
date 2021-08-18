@@ -33,7 +33,7 @@ class RocketViewModel @Inject constructor(private val getRocketUseCase: GetRocke
         get()
     }
 
-    private fun get() {
+    fun get() {
         viewModelScope.launch {
             Log.d("Viewmodel", "Call View Model Get***")
             _loading.value = ConsumableValue(true)

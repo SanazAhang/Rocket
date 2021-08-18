@@ -15,7 +15,7 @@ import com.example.racket.domain.model.Model
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RocketsFragment : Fragment(), View.OnClickListener {
+class RocketsFragment : Fragment() {
 
     private var binding: FragmentRocketsBinding? = null
 
@@ -24,23 +24,19 @@ class RocketsFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding!!.progressbar.visibility = View.GONE
-
         binding!!.recyclerViewRocket.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = rocketAdapter
-
         }
 
         rocketAdapter.setOnItemClickListener(object : RocketAdapter.ClickListener {
             override fun onClick(movie: Model.Rocket) {
                 navigateToRocketDetail(movie)
             }
-
         })
+
         observer()
     }
-
 
     private fun observer() {
 
@@ -52,6 +48,10 @@ class RocketsFragment : Fragment(), View.OnClickListener {
 
         viewModel.loading.observe(viewLifecycleOwner,::onLoading)
 
+        binding!!.swipeRefreshLayout.apply {
+            isRefreshing = true
+            setOnRefreshListener(::onRefresh)
+        }
     }
 
     private fun onGetRocket(event: ConsumableValue<List<Model.Rocket>>) {
@@ -59,33 +59,30 @@ class RocketsFragment : Fragment(), View.OnClickListener {
             rocketAdapter.submitList(it)
             val layoutManager = binding?.recyclerViewRocket?.layoutManager
             layoutManager?.smoothScrollToPosition(binding?.recyclerViewRocket, null, 0)
-
         }
     }
 
     private fun onLoading(event: ConsumableValue<Boolean>) {
         event.consume {
-            if (it) {
-                binding!!.progressbar.visibility = View.VISIBLE
-            } else {
-                binding!!.progressbar.visibility = View.GONE
-            }
+            binding!!.swipeRefreshLayout.isRefreshing = it
         }
     }
 
     private fun onError(event: ConsumableValue<Throwable>) {
         event.consume {
-            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
 
         }
     }
 
     private fun onFailure(event: ConsumableValue<String>) {
-
         event.consume {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
+    }
 
+    private fun onRefresh() {
+        viewModel.get()
     }
 
     private fun navigateToRocketDetail(rocket: Model.Rocket) {
@@ -107,8 +104,5 @@ class RocketsFragment : Fragment(), View.OnClickListener {
         binding = null
     }
 
-    override fun onClick(v: View?) {
-
-    }
 
 }
